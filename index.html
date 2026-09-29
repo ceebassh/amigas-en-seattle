@@ -380,6 +380,64 @@ border-radius: 6px;
 margin-left: 8px;
 vertical-align: middle;
 }
+.kraken-steps {
+list-style: none;
+counter-reset: kstep;
+margin: 0;
+padding: 0;
+text-align: left;
+}
+
+.kraken-steps li {
+counter-increment: kstep;
+position: relative;
+padding-left: 36px;
+margin-bottom: 12px;
+font-size: 14px;
+line-height: 1.5;
+color: var(--blue);
+}
+
+.kraken-steps li:last-child { margin-bottom: 0; }
+
+.kraken-steps li::before {
+content: counter(kstep);
+position: absolute;
+left: 0;
+top: 0;
+width: 24px;
+height: 24px;
+border-radius: 50%;
+background: #001628;
+color: #fff;
+font-size: 12px;
+font-weight: 700;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.kraken-steps a { color: var(--blue); font-weight: 700; }
+
+.kraken-steps-card {
+border: 2px solid #001628;
+border-radius: 16px;
+padding: 18px 18px 16px;
+margin-top: 12px;
+background: var(--white);
+}
+
+.kraken-steps-title {
+font-size: 11px;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+font-weight: 700;
+color: #001628;
+margin-bottom: 12px;
+}
+
+.kraken-modal .kraken-steps { margin-bottom: 22px; }
+.kraken-modal .kraken-steps li { font-size: 13px; margin-bottom: 10px; }
 /* END KRAKEN PROMO CSS */
 </style>
 </head>
@@ -420,17 +478,26 @@ bienvenidas al grupo amigas.
 <div class="section-label">Limited Time <span class="kraken-tag">Ends Oct 22</span></div>
 <div class="section-sub">tickets a precio especial para Hispanic Heritage Night con los Kraken</div>
 <div class="links">
-<a class="link-card kraken-tile" href="https://www.gofevo.com/event/Amigasen2" target="_blank" rel="noopener">
+<a class="link-card kraken-tile" href="https://heylo.com/invite/A0m2WilY" target="_blank" rel="noopener">
 <div class="link-icon">
 <span style="font-size:22px;">🏒</span>
 </div>
 <div class="link-text">
 <div class="link-label">Seattle Kraken</div>
 <div class="link-handle">Hispanic Heritage Night · Oct 22</div>
-<div class="link-sub">get your tickets — precio especial para amigas, while supplies last</div>
+<div class="link-sub">el link de tickets con precio especial esta en Heylo, solo para amigas. while supplies last</div>
 </div>
 <div class="link-arrow">→</div>
 </a>
+<div class="kraken-steps-card">
+<div class="kraken-steps-title">como conseguir tus tickets</div>
+<ol class="kraken-steps">
+<li>join nuestro grupo <a href="https://heylo.com/invite/A0m2WilY" target="_blank" rel="noopener">Amigas en Seattle en Heylo</a></li>
+<li>ve al tab de <b>Events</b> y busca <b>Seattle Kraken</b></li>
+<li>abre el link en el event y compra tu ticket con el precio especial</li>
+<li>marcate como <b>Going</b> en el event para saber a quien buscar 💛</li>
+</ol>
+</div>
 </div>
 <!-- END KRAKEN PROMO TILE -->
 
@@ -495,18 +562,24 @@ bienvenidas al grupo amigas.
 <!-- KRAKEN PROMO POPUP — TEMPORARY, remove this whole block after Oct 22 2026 -->
 <div class="kraken-overlay" id="krakenPopup">
 <div class="kraken-modal">
-<button class="kraken-close" onclick="document.getElementById('krakenPopup').classList.remove('show'); try{localStorage.setItem('krakenPopupDismissed','1');}catch(e){}" aria-label="Close">✕</button>
+<button class="kraken-close" onclick="document.getElementById('krakenPopup').classList.remove('show'); try{localStorage.setItem('krakenPopupDismissed2','1');}catch(e){}" aria-label="Close">✕</button>
 <div class="kraken-badge">Limited time</div>
 <div class="kraken-modal-title">Ven con nosotras a los Kraken! 🏒</div>
-<div class="kraken-modal-body">Amigas en Seattle tiene tickets a precio especial para Hispanic Heritage Night con los Kraken — Jueves, Oct 22 en Climate Pledge Arena. While supplies last!</div>
-<a class="kraken-modal-cta" href="https://www.gofevo.com/event/Amigasen2" target="_blank" rel="noopener" onclick="try{localStorage.setItem('krakenPopupDismissed','1');}catch(e){}">Get Tickets →</a>
-<button class="kraken-modal-dismiss" onclick="document.getElementById('krakenPopup').classList.remove('show'); try{localStorage.setItem('krakenPopupDismissed','1');}catch(e){}">tal vez luego</button>
+<div class="kraken-modal-body">Amigas en Seattle tiene tickets a precio especial para Hispanic Heritage Night con los Kraken, jueves Oct 22 en Climate Pledge Arena. While supplies last! El link de tickets esta en Heylo:</div>
+<ol class="kraken-steps">
+<li>join nuestro grupo en Heylo</li>
+<li>ve al tab de <b>Events</b> y busca <b>Seattle Kraken</b></li>
+<li>abre el link en el event y compra tu ticket</li>
+<li>marcate como <b>Going</b> para saber a quien buscar 💛</li>
+</ol>
+<a class="kraken-modal-cta" href="https://heylo.com/invite/A0m2WilY" target="_blank" rel="noopener" onclick="try{localStorage.setItem('krakenPopupDismissed2','1');}catch(e){}">Join Heylo →</a>
+<button class="kraken-modal-dismiss" onclick="document.getElementById('krakenPopup').classList.remove('show'); try{localStorage.setItem('krakenPopupDismissed2','1');}catch(e){}">tal vez luego</button>
 </div>
 </div>
 <script>
 (function() {
 var dismissed = false;
-try { dismissed = !!localStorage.getItem('krakenPopupDismissed'); } catch (e) {}
+try { dismissed = !!localStorage.getItem('krakenPopupDismissed2'); } catch (e) {}
 if (!dismissed) {
 window.addEventListener('load', function() {
 setTimeout(function() {
